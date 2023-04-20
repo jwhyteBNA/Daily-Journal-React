@@ -5,24 +5,22 @@ import { searchEntries } from "./EntryManager";
 export const EntryList = ({ moods, entries, onEditButtonClick, onDeleteButtonClick }) => {
 
   const [filteredEntries, setEntries] = useState([]);
-  const [searchedTerm, setTerm] = useState("");
+  const [searched_term, setTerm] = useState("");
   const [moodSelected, setMoodSelected] = useState("");
 
   useEffect(() => {
-    if (searchedTerm !== "") {
-      searchEntries(searchedTerm).then(entriesData => setEntries(entriesData))
+    if (searched_term !== "") {
+      searchEntries(searched_term).then(entriesData => setEntries(entriesData))
     } else {
       setEntries(entries)
     }
-  }, [searchedTerm, entries])
+  }, [searched_term, entries])
 
-
-  const filterAllEntries = (moodId) => {
-    const filteredEntriesByMood = entries.filter(entry => entry.moodId === parseInt(moodId))
+  const filterAllEntries = (mood_id) => {
+    const filteredEntriesByMood = entries.filter(entry => entry.mood_id === parseInt(mood_id))
     setEntries(filteredEntriesByMood)
-    setMoodSelected(parseInt(moodId))
+    setMoodSelected(parseInt(mood_id))
   }
-
 
   return (
     <article className="panel is-primary">
@@ -46,8 +44,8 @@ export const EntryList = ({ moods, entries, onEditButtonClick, onDeleteButtonCli
         <p className="control has-icons-left">
           <input className="input is-primary" type="text" placeholder="Search" onKeyUp={
             (event) => {
-              const searchTerm = event.target.value
-              setTerm(searchTerm)
+              const searched_term = event.target.value
+              setTerm(searched_term)
             }
           } />
         </p>
@@ -57,7 +55,7 @@ export const EntryList = ({ moods, entries, onEditButtonClick, onDeleteButtonCli
         return <div className="panel-block" key={entry.id}>
           <Entry
             entry={entry}
-            mood={moods.find(m => m.id === entry.moodId)}
+            mood={moods.find(m => m.id === entry.mood_id)}
             onEditButtonClick={onEditButtonClick}
             onDeleteButtonClick={onDeleteButtonClick}
           />

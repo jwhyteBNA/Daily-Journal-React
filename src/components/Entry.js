@@ -41,3 +41,12 @@ export const Entry = ({ entry, mood, onEditButtonClick, onDeleteButtonClick }) =
     </article>
   )
 };
+
+
+// export const Entry = (entryObject) => {
+//   return `
+//       <section id="mood--${entryObject.id}">
+//           <div>My mood was ${entryObject.mood} when I learned this</div>
+//       </section>
+//   `
+// }

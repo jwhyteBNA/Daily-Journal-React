@@ -4,8 +4,8 @@ export const getEntries = () => {
     .then(res => res.json())
 };
 
-export const searchEntries = (searchTerm) => {
-  return fetch(`http://localhost:8088/entries?q=${searchTerm}`)
+export const searchEntries = (searched_term) => {
+  return fetch(`http://localhost:8088/entries?q=${searched_term}`)
     .then(res => res.json())
 };
 

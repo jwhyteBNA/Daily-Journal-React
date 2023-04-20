@@ -10,7 +10,7 @@ export const DailyJournal = () => {
   const [entry, setEntry] = useState({
     concept: '',
     entry: '',
-    moodId: 0
+    mood_id: 0
   })
 
   useEffect(() => {
